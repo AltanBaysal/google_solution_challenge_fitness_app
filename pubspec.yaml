@@ -19,6 +19,11 @@ dependencies:
   pedometer: ^3.0.0
   dartz: ^0.10.1
   equatable: ^2.0.5
+  google_fonts: ^4.0.3
+
+  flutter_tflite: ^1.0.1
+  camera: ^0.10.3+2
+  image:  ^3.2.0
 
 
 dev_dependencies:

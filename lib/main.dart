@@ -1,6 +1,12 @@
 import 'package:google_solution_challenge_fitness_app/core/_core_export.dart';
 
-void main() {
+late List<CameraDescription> cameras;
+TFLiteDataSourceImpl tfLiteDataSource = TFLiteDataSourceImpl();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+  tfLiteDataSource.loadModel();
   runApp(const MyApp());
 }
 
@@ -19,7 +25,7 @@ class MyApp extends StatelessWidget {
       showPerformanceOverlay: false,
       title: AppTexts.appName,
       navigatorKey: GlobalContextKey.instance.globalKey,
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.workout,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

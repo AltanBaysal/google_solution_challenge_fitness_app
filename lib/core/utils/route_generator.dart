@@ -1,4 +1,5 @@
 import 'package:google_solution_challenge_fitness_app/core/_core_export.dart';
+import 'package:google_solution_challenge_fitness_app/feature/workout/view/pages/workout_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -35,6 +36,10 @@ class RouteGenerator {
       case AppRoutes.startExercise:
         return MaterialPageRoute(
           builder: (_) => const StartExercise(),
+        );
+      case AppRoutes.workout:
+        return MaterialPageRoute(
+          builder: (_) => const WorkoutPage(),
         );
       default:
         return _errorRoute();
