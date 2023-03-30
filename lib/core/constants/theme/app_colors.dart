@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color darkPurple = Color.fromARGB(255, 30, 35, 44);
   static const Color black = Color(0xff191919);
+  static const Color transparantBlack = Color.fromARGB(187, 25, 25, 25);
   static const Color blueGray = Color(0xff3A4750);
   static const Color cyan = Color(0xff00ADB5);
   static const Color deepOrange = Color(0xffff805e);

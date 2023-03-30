@@ -31,4 +31,6 @@ class AppTexts {
   static const String getStarted = "GET STARTED";
 
   static const String fullExercise = 'Full Exercise';
+
+  static const String count = 'Count:';
 }

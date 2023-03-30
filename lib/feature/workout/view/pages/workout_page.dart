@@ -1,4 +1,5 @@
 import 'package:google_solution_challenge_fitness_app/core/_core_export.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class WorkoutPage extends StatefulWidget {
   const WorkoutPage({super.key});
@@ -19,11 +20,12 @@ class _WorkoutPageState extends State<WorkoutPage> {
       enableAudio: false,
       imageFormatGroup: ImageFormatGroup.bgra8888,
     );
-    /*
+
     cameraController.initialize().then((value) {
       setState(
         () {},
       );
+      /*
       cameraController.startImageStream((image) async {
         final byteMap = image.planes.map((plane) {
           return plane.bytes;
@@ -47,9 +49,9 @@ class _WorkoutPageState extends State<WorkoutPage> {
         }
 
         await Future.delayed(Duration(seconds: 5));
-      });
+      });*/
     });
-*/
+
     super.initState();
   }
 
@@ -60,7 +62,50 @@ class _WorkoutPageState extends State<WorkoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CameraPreview(cameraController),
+      body: Stack(
+        children: [
+          SizedBox(
+            height: ScreenSize.getHeightPercent(1),
+            child: CameraPreview(cameraController),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+              vertical: ScreenSize.getHeightPercent(.06),
+            ),
+            height: ScreenSize.getHeightPercent(1),
+            width: ScreenSize.getWidthPercent(1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(7),
+                  alignment: Alignment.center,
+                  width: ScreenSize.getWidthPercent(1),
+                  color: AppColors.transparantBlack,
+                  child: Text(
+                    AppTexts.count + " 3",
+                    style: AppTextStyles.title30BoldBlack.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                CircularPercentIndicator(
+                  radius: 80,
+                  lineWidth: 15,
+                  percent: .675,
+                  center: new Text(
+                    "67.5%",
+                    style: AppTextStyles.title22Bold,
+                  ),
+                  progressColor: Colors.blue,
+                  backgroundColor: Colors.white,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
