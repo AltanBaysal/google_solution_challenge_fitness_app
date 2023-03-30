@@ -8,14 +8,15 @@ class TFLiteDataSourceImpl implements TfLiteDataSource {
   String? res;
 
   Future<void> loadModel() async {
-    await close();
+    print("asdasdasdasdas");
     try {
       res = await Tflite.loadModel(
         model: TFlitePaths.moveNetLighting,
-        isAsset: false,
       );
       print(res);
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> close() async {
@@ -36,7 +37,15 @@ class TFLiteDataSourceImpl implements TfLiteDataSource {
   }) {
     return Tflite.runPoseNetOnFrame(
       bytesList: bytesList,
-      numResults: 2,
+      imageHeight: imageHeight,
+      imageWidth: imageWidth,
+      imageMean: imageMean,
+      imageStd: imageStd,
+      rotation: rotation,
+      numResults: numResults,
+      threshold: threshold,
+      nmsRadius: nmsRadius,
+      asynch: asynch,
     );
   }
 }

@@ -2,6 +2,7 @@
     package="com.example.google_solution_challenge_fitness_app">
    <application
         android:label="google_solution_challenge_fitness_app"
+        android:extractNativeLibs="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

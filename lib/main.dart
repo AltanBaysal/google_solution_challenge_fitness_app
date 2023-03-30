@@ -6,7 +6,7 @@ TFLiteDataSourceImpl tfLiteDataSource = TFLiteDataSourceImpl();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
-  tfLiteDataSource.loadModel();
+  await tfLiteDataSource.loadModel();
   runApp(const MyApp());
 }
 

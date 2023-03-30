@@ -15,22 +15,21 @@ class _WorkoutPageState extends State<WorkoutPage> {
     print(cameras);
     cameraController = CameraController(
       cameras[1],
-      ResolutionPreset.high,
+      ResolutionPreset.max,
       enableAudio: false,
-      imageFormatGroup: ImageFormatGroup.jpeg,
+      imageFormatGroup: ImageFormatGroup.bgra8888,
     );
-
+    /*
     cameraController.initialize().then((value) {
       setState(
         () {},
       );
       cameraController.startImageStream((image) async {
-        print(image.planes.length);
-        setState(() {});
         final byteMap = image.planes.map((plane) {
           return plane.bytes;
         }).toList();
-        if (byteMap.length > 1) {
+
+        try {
           final predictions = await tfLiteDataSource.runOnFrame(
             byteMap,
             imageHeight: 192,
@@ -42,11 +41,15 @@ class _WorkoutPageState extends State<WorkoutPage> {
               print(element);
             });
           }
-          RouteManager.pushNamed(AppRoutes.welcome1);
+        } catch (e) {
+          print(e.toString() +
+              "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas");
         }
+
+        await Future.delayed(Duration(seconds: 5));
       });
     });
-
+*/
     super.initState();
   }
 
