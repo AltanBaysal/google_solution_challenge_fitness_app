@@ -9,9 +9,9 @@ class SplashRegularText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: AppTextStyles.title22Bold.copyWith(
-        color: color ?? AppColors.black,
-      ),
+      style: AppTextStyles.body15Medium.copyWith(
+          color: color ?? AppColors.black,
+          fontSize: ScreenSize.getWidthPercent(16 / 360)),
     );
   }
 }

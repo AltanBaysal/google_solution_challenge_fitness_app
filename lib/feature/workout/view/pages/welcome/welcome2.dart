@@ -16,11 +16,10 @@ class WelcomeScreen2 extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               AppSvgPicture(
-                svg:
-                    "assets/images/women_drink_water.svg", //TODO bunlar assets paths'den alınmalı
-                height: 600, //TODO: bu değerler sabit verilmeyecek!
+                svg: AppImagesPath.womenDrinkWater,
+                height: ScreenSize.getWidthPercent(450 / 360),
               ),
               SizedBox(
                 height: 45,
@@ -35,13 +34,13 @@ class WelcomeScreen2 extends StatelessWidget {
           ),
           WelcomeButton(
               function: () {
-                RouteManager.pushReplacementNamed(AppRoutes.welcome3);
+                RouteManager.pushReplacementNamed(AppRoutes.login);
               },
               text: AppTexts.skip,
               alignment: Alignment.bottomLeft),
           WelcomeButton(
             function: () {
-              RouteManager.pushReplacementNamed(AppRoutes.categories);
+              RouteManager.pushReplacementNamed(AppRoutes.login);
             },
             text: AppTexts.next,
             alignment: Alignment.bottomRight,

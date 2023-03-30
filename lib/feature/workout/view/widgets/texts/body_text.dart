@@ -12,12 +12,6 @@ class BodyBoldText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-          fontSize: 20,
-          color: color ?? AppColors.black,
-          fontWeight: FontWeight.bold),
-    );
+    return Text(text, style: AppTextStyles.body20BebasNeueRegular);
   }
 }

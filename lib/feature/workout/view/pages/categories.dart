@@ -58,14 +58,13 @@ class CategoriesScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: AppPadding.kDefaultPadding),
+        padding: EdgeInsets.symmetric(horizontal: AppPadding.kDefaultPadding),
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 1,
               crossAxisSpacing: 20,
-              mainAxisSpacing: 50),
+              mainAxisSpacing: 100),
           itemCount: categories.length,
           itemBuilder: (context, index) {
             return CategoryColumn(

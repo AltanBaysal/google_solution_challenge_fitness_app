@@ -5,69 +5,105 @@ class FullExerciseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String argument = ModalRoute.of(context)!.settings.arguments
-        as String; //TODO bunu constructerdan alabilirsin ama onun yerine provider'dan alsan daha iyi olıur
+    // final String argument = ModalRoute.of(context)!.settings.arguments
+    //     as String; //TODO bunu constructerdan alabilirsin ama onun yerine provider'dan alsan daha iyi olıur
 
-    List<FullExercises> fullExercises = [];
+    final routeProvider = Provider.of<RouteArgumentProvider>(context);
 
-    //TODO: Sub-titles of the selected exercise will be added to these lists.
-    switch (argument) {
-      case AppTexts.yoga:
-        fullExercises = [];
-        break;
+    List<FullExercise> fullExercises = [
+      //todo : bu veriler sabit olmasa daha iyi olur gibi Api'den falan çeksek.
+      FullExercise(
+        "10",
+        "110",
+        AppTexts.beginner,
+        AppImagesPath.jumping,
+        "Exercise with jumping\nRope(Slow)",
+      ),
+      FullExercise(
+        "15",
+        "80",
+        AppTexts.Intermediate,
+        AppImagesPath.sittingWithDumbell,
+        "Exercise with sitting\nDumbbels",
+      ),
+      FullExercise(
+        "10",
+        "150",
+        AppTexts.Intermediate,
+        AppImagesPath.jumping2,
+        "Exercise with jumping\nRope(Fast)",
+      ),
+      FullExercise("20", "148", AppTexts.beginner, AppImagesPath.gymnastic,
+          "Free exercise\n(push-ups, sit-ups etc.)"), // TODO : bu kısım serbest egzersizler olsun.
+    ];
 
-      case AppTexts.legs:
-        fullExercises = [];
-        break;
+    //TODO: Sub-titles of the selected exercise will  be added to these lists.
+    // switch (argument) {
+    //   case AppTexts.yoga:
+    //     fullExercises = [];
+    //     break;
 
-      case AppTexts.cardio:
-        fullExercises = [];
-        break;
-      case AppTexts.gym:
-        fullExercises = [];
-        break;
-      case AppTexts.stretch:
-        fullExercises = [];
-        break;
-      case AppTexts.fullbody:
-        fullExercises = [];
-        break;
-    }
+    //   case AppTexts.legs:
+    //     fullExercises = [];
+    //     break;
+
+    //   case AppTexts.cardio:
+    //     fullExercises = [];
+    //     break;
+    //   case AppTexts.gym:
+    //     fullExercises = [];
+    //     break;
+    //   case AppTexts.stretch:
+    //     fullExercises = [];
+    //     break;
+    //   case AppTexts.fullbody:
+    //     fullExercises = [];
+    //     break;
+    // }
 
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         leadingWidth: 0,
-        backgroundColor: AppColors.white,
-        title: const Center(child: AppbarText(text: AppTexts.fullExercise)),
-        leading: const AppbarBackIcon(),
+        title: Stack(
+          children: [
+            Align(alignment: Alignment.topLeft, child: const AppbarBackIcon()),
+            const Align(
+                alignment: Alignment.center,
+                child: AppbarText(text: AppTexts.fullExercise)),
+          ],
+        ),
       ),
       body: ListView.builder(
         itemCount: fullExercises.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: AppPadding.kDefaultPadding),
+            padding:
+                EdgeInsets.symmetric(horizontal: AppPadding.kDefaultPadding),
             child: GestureDetector(
               onTap: () {
-                RouteManager.pushNamed("/start",
-                    arguments: fullExercises[index].exercisePhotoPath);
+                routeProvider
+                    .setArguments(fullExercises[index].exercisePhotoPath);
+                RouteManager.pushNamed("/start");
               },
               child: Container(
-                padding: const EdgeInsets.only(bottom: 15),
+                padding: EdgeInsets.symmetric(
+                    vertical: ScreenSize.getWidthPercent(15 / 800)),
                 decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                            color: AppColors.gray.withOpacity(20 / 100)))),
+                  border: Border(
+                    bottom: BorderSide(
+                      color: AppColors.gray.withOpacity(20 / 100),
+                    ),
+                  ),
+                ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppSvgPicture(
                       svg: fullExercises[index].exercisePhotoPath,
-                      height: 120,
+                      height: ScreenSize.getWidthPercent(95 / 360),
                     ),
-                    const SizedBox(
-                      width: 15,
+                    SizedBox(
+                      width: ScreenSize.getWidthPercent(15 / 360),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -76,8 +112,8 @@ class FullExerciseScreen extends StatelessWidget {
                         BodyBoldText(
                           text: fullExercises[index].exerciseName,
                         ),
-                        const SizedBox(
-                          height: 15,
+                        SizedBox(
+                          height: ScreenSize.getHeightPercent(15 / 800),
                         ),
                         Row(
                           children: [
@@ -85,21 +121,21 @@ class FullExerciseScreen extends StatelessWidget {
                               svg: "assets/icons/calorie.svg",
                               height: 20,
                             ),
-                            const SizedBox(
-                              width: 5,
+                            SizedBox(
+                              width: ScreenSize.getWidthPercent(5 / 360),
                             ),
                             SmallGrayText(
                                 text:
                                     "${fullExercises[index].exercisecCalorie} kcal"),
-                            const SizedBox(
-                              width: 5,
+                            SizedBox(
+                              width: ScreenSize.getWidthPercent(5 / 360),
                             ),
                             const AppSvgPicture(
                               svg: "assets/icons/line.svg",
                               height: 20,
                             ),
-                            const SizedBox(
-                              width: 5,
+                            SizedBox(
+                              width: ScreenSize.getWidthPercent(5 / 360),
                             ),
                             const AppSvgPicture(
                               svg: "assets/icons/clock.svg",
@@ -113,8 +149,8 @@ class FullExerciseScreen extends StatelessWidget {
                                     "${fullExercises[index].exerciseTime} min"),
                           ],
                         ),
-                        const SizedBox(
-                          height: 5,
+                        SizedBox(
+                          height: ScreenSize.getHeightPercent(10 / 800),
                         ),
                         SmallGrayText(text: fullExercises[index].exerciseLevel),
                       ],
@@ -130,13 +166,13 @@ class FullExerciseScreen extends StatelessWidget {
   }
 }
 
-class FullExercises {
+class FullExercise {
   final String exerciseName;
   final String exerciseTime;
   final String exercisecCalorie;
   final String exerciseLevel;
   final String exercisePhotoPath;
 
-  FullExercises(this.exerciseTime, this.exercisecCalorie, this.exerciseLevel,
+  FullExercise(this.exerciseTime, this.exercisecCalorie, this.exerciseLevel,
       this.exercisePhotoPath, this.exerciseName);
 }

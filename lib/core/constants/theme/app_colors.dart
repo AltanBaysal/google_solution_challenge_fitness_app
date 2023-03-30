@@ -16,4 +16,6 @@ class AppColors {
   static const Color amber = Color(0xffFBBC05);
   static const Color lightRed = Color(0xffFF805E);
   static const Color transparant = Colors.transparent;
+  static const Color lightWhite = Color(0xffF5F5F5);
+  static const Color darkBrown = Color(0xff303841);
 }

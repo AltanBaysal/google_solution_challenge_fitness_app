@@ -20,27 +20,27 @@ class WelcomeScreen1 extends StatelessWidget {
             children: [
               Stack(
                 alignment: Alignment.center,
-                children: const [
+                children: [
                   AppSvgPicture(
                     svg: AppImagesPath.greenCircle,
-                    height: 450,
+                    height: ScreenSize.getWidthPercent(340 / 360),
                   ),
                   AppSvgPicture(
                     svg: AppImagesPath.firstWelcomeImage,
-                    height: 450,
+                    height: ScreenSize.getWidthPercent(340 / 360),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 45,
+              SizedBox(
+                height: ScreenSize.getHeightPercent(40 / 800),
               ),
               const SplashBoldText(text: AppTexts.perfectBody),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   SplashBoldText(text: AppTexts.doing),
                   SizedBox(
-                    width: 15,
+                    width: ScreenSize.getWidthPercent(15 / 360),
                   ),
                   SplashBoldText(
                     text: AppTexts.crossfit,
@@ -62,7 +62,7 @@ class WelcomeScreen1 extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             text: AppTexts.skip,
             function: () {
-              RouteManager.pushNamed(AppRoutes.categories);
+              RouteManager.pushNamed(AppRoutes.login);
             },
           )
         ],

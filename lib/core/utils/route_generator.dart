@@ -36,6 +36,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const StartExercise(),
         );
+      case AppRoutes.forgotpw:
+        return MaterialPageRoute(
+          builder: (_) => const ForgotPwScreen(),
+        );
+
+      case AppRoutes.login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case AppRoutes.signup:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
+
       default:
         return _errorRoute();
     }

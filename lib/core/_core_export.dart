@@ -10,3 +10,4 @@ export 'utils/_utils_exports.dart';
 export 'package:google_solution_challenge_fitness_app/main.dart';
 export 'package:google_solution_challenge_fitness_app/core/_package_export.dart';
 export 'package:google_solution_challenge_fitness_app/feature/_feature_export.dart';
+export 'provider/_provider_exports.dart';

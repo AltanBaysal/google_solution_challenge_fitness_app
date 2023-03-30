@@ -5,51 +5,48 @@ class StartExercise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String argument =
-        ModalRoute.of(context)!.settings.arguments as String;
-
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
         leading: const AppbarBackIcon(),
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: AppPadding.kDefaultPadding),
-        child: Stack(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
+        padding: EdgeInsets.symmetric(horizontal: AppPadding.kDefaultPadding),
+        child: Column(
           children: [
-            const Align(
-                alignment: Alignment.topCenter,
-                child: BodyBoldText(text: AppTexts.getStarted)),
-            Align(
-              alignment: Alignment.center,
-              child: AppSvgPicture(
-                svg: argument,
-                height: 250,
-              ),
+            Expanded(
+              child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    AppTexts.letsGetStarted,
+                    style: AppTextStyles.title22Bold
+                        .copyWith(fontWeight: FontWeight.w400),
+                  )),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: GestureDetector(
-                child: Container(
-                  margin: const EdgeInsets.only(bottom: 50),
-                  decoration: BoxDecoration(
-                      color: AppColors.darkLime,
-                      borderRadius: BorderRadius.circular(5)),
-                  width: double.infinity,
-                  height: 60,
-                  child: const Center(
-                    child: BodyBoldText(
-                      text: AppTexts.getStarted,
-                      color: AppColors.white,
-                    ),
+            Consumer<RouteArgumentProvider>(
+                builder: (context, argumentProvider, child) {
+              final argument = argumentProvider.object as String;
+              return Expanded(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: AppSvgPicture(
+                    svg: argument,
+                    height: ScreenSize.getWidthPercent(250 / 360),
                   ),
+                ),
+              );
+            }),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: AuthButton(
+                  text: AppTexts.getStarted,
+                  function: () {}, //TODO:
                 ),
               ),
             ),
+            SizedBox(
+              height: ScreenSize.getHeightPercent(25 / 800),
+            )
           ],
         ),
       ),

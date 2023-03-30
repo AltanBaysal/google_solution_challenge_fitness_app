@@ -17,15 +17,15 @@ class CategoryColumn extends StatelessWidget {
         GestureDetector(
           child: AppSvgPicture(
             svg: svg,
-            height: 170,
+            height: ScreenSize.getWidthPercent(120 / 360),
           ),
           onTap: () {
             function();
           },
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        // SizedBox(
+        //   height: ScreenSize.getHeightPercent(15 / 800),
+        // ),
         BodyBoldText(text: text),
       ],
     );

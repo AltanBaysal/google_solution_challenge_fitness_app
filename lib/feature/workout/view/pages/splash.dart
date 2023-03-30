@@ -6,7 +6,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //TODO: Sizedboxların ve Svglerin boyutu ayarlanacak şuan sabit sayılar verdim geçtim. ScreenSize da hata veriyor neden bilmiyorum :/
       backgroundColor: AppColors.white,
       body: Stack(
         children: [
@@ -20,14 +19,14 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Stack(
-                children: const [
+                children: [
                   AppSvgPicture(
                     svg: AppImagesPath.shapes,
-                    height: 380, //
+                    height: ScreenSize.getWidthPercent(1.5 / 2), //
                   ),
                   AppSvgPicture(
                     svg: AppImagesPath.splashImage,
-                    height: 380,
+                    height: ScreenSize.getWidthPercent(1.5 / 2),
                   ),
                 ],
               ),
@@ -72,16 +71,17 @@ class SplashButton extends StatelessWidget {
         RouteManager.pushNamed(AppRoutes.welcome1);
       },
       child: Container(
-        height: 56, //TODO: burada da ScrenSize() kullandım hata veriyor :/
-        width: 180,
+        height: ScreenSize.getHeightPercent(56 / 800),
+        width: ScreenSize.getWidthPercent(1 / 2),
         decoration: BoxDecoration(
           color: AppColors.black,
           borderRadius: BorderRadius.circular(5),
         ),
-        child: const Center(
-          child: SplashRegularText(
-            text: AppTexts.letsStart,
-            color: AppColors.white,
+        child: Center(
+          child: Text(
+            AppTexts.letsStart,
+            style: AppTextStyles.body20RegularDmSans
+                .copyWith(color: AppColors.white),
           ),
         ),
       ),

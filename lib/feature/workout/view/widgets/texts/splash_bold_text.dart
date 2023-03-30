@@ -16,13 +16,9 @@ class SplashBoldText extends StatelessWidget {
         const SizedBox(
           height: 7.5,
         ),
-        Text(
-          text,
-          style: TextStyle(
-              color: color ?? AppColors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 40),
-        ),
+        Text(text,
+            style: AppTextStyles.titleBebasNeue48
+                .copyWith(color: color ?? AppColors.black))
       ],
     );
   }
